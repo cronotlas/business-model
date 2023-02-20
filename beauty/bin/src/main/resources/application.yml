@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: beauty
+    url: jdbc:postgresql://117.52.98.176:20000/beauty
+    password: beauty
+    
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/**.xml
+  
+server:
+  port: 55555
