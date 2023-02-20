@@ -5,7 +5,7 @@
 1. nodejs 설치 (v16.17.0)
 2. vsCode 다운 (버젼 상관없음)
 3. open folder 로 해서 D:\dev\git\business-model\business-model\beauty\frontend 여기 경로를 잡아주삼 
-    >>>> 원래 경로는 다른데였는데....git붙이니까 저기로 들어가버렸삼....암튼 프로젝트 폴더 내의 frontend 경로를 잡아주면 됨
+    - 원래 경로는 다른데였는데....git붙이니까 저기로 들어가버렸삼....암튼 프로젝트 폴더 내의 frontend 경로를 잡아주면 됨
 4. terminal 에서 npm install 하면 node_modules 에 lib 파일이 내려옴 (현재 소스에 vue lib까지 다 올라간 상태라....안해도 상관은 없음
 5. terminal 에서 npm run build 하면 beauty\src\main\resources\static\contents\js\model\vue 안에 js 파일 생성됨
 6. 실행
