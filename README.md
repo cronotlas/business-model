@@ -8,7 +8,7 @@
     - 원래 경로는 다른데였는데....git붙이니까 저기로 들어가버렸삼....암튼 프로젝트 폴더 내의 frontend 경로를 잡아주면 됨
 4. terminal 에서 npm install 하면 node_modules 에 lib 파일이 내려옴 (현재 소스에 vue lib까지 다 올라간 상태라....안해도 상관은 없음
 5. terminal 에서 npm run build 하면 beauty\src\main\resources\static\contents\js\model\vue 안에 js 파일 생성됨
-6. 실행
+6. 이클립스에서 appltcation 실행
 
 ================= vuejs 사용법================
 
