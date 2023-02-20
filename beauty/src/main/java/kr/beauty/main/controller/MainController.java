@@ -29,8 +29,32 @@ public class MainController {
 	}
 		
 	@RequestMapping(value={"/"},method=RequestMethod.GET)
-	public String updateContentBoardView(MainViewModel vm,Model model){
+	public String mainView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
 		return "/view/dashboard.html";
+	}
+	
+	@RequestMapping(value={"/pay"},method=RequestMethod.GET)
+	public String payView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/pay/pay.html";
+	}
+	
+	@RequestMapping(value={"/product"},method=RequestMethod.GET)
+	public String productView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/product/product.html";
+	}
+	
+	@RequestMapping(value={"/schedule"},method=RequestMethod.GET)
+	public String scheduleView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/schedule/schedule.html";
+	}
+	
+	@RequestMapping(value={"/user"},method=RequestMethod.GET)
+	public String updateContentBoardView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/user/user.html";
 	}
 }
