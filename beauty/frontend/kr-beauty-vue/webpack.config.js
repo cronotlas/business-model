@@ -4,7 +4,10 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     moniter:'./src/monitor.js'
-    ,main:'./src/main.js'
+    ,pay:'./src/pay.js'
+    ,schedule:'./src/schedule.js'
+    ,product:'./src/product.js'
+    ,user:'./src/user.js'
   },
   output: {
     path: path.resolve(__dirname, './../../src/main/resources/static/contents/js/model/vue'),

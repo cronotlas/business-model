@@ -27,4 +27,10 @@ public class MainController {
 		vm.setListInfo(mainService.listUser());
 		return vm;
 	}
+		
+	@RequestMapping(value={"/"},method=RequestMethod.GET)
+	public String updateContentBoardView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/dashboard.html";
+	}
 }
