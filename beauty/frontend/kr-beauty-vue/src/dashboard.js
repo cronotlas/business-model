@@ -1,8 +1,15 @@
+import 'es6-promise/auto'
 import Vue from 'vue'
 import Axios from 'axios'
+import Common from './components/common.js';
+import GlobalMenu from './components/menu.vue'
+import 'regenerator-runtime/runtime'
+
+Vue.component(GlobalMenu.name, GlobalMenu);
+Vue.component('common', Common);
 
 new Vue({
-	el: '#scope-monitor',
+	el: '#scope-dashboard',
 	data: function() {
 		return {
 			viewModel: {
@@ -12,7 +19,7 @@ new Vue({
 		}
 	}
 	,mounted: function() {
-		console.log("mounted [monitor]");
+		console.log("mounted [dashboard]");
 		try {
 			this.fnInit();
       

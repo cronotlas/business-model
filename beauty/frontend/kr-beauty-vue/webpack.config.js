@@ -3,7 +3,7 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    moniter:'./src/monitor.js'
+    dashboard:'./src/dashboard.js'
     ,pay:'./src/pay.js'
     ,schedule:'./src/schedule.js'
     ,product:'./src/product.js'
