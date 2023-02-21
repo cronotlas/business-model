@@ -31,30 +31,30 @@ public class MainController {
 	@RequestMapping(value={"/"},method=RequestMethod.GET)
 	public String mainView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
-		return "/view/dashboard.html";
+		return "/view/dashboard";
 	}
 	
 	@RequestMapping(value={"/pay"},method=RequestMethod.GET)
 	public String payView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
-		return "/view/pay/pay.html";
+		return "/view/pay/pay";
 	}
 	
 	@RequestMapping(value={"/product"},method=RequestMethod.GET)
 	public String productView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
-		return "/view/product/product.html";
+		return "/view/product/product";
 	}
 	
 	@RequestMapping(value={"/schedule"},method=RequestMethod.GET)
 	public String scheduleView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
-		return "/view/schedule/schedule.html";
+		return "/view/schedule/schedule";
 	}
 	
 	@RequestMapping(value={"/user"},method=RequestMethod.GET)
 	public String updateContentBoardView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
-		return "/view/user/user.html";
+		return "/view/user/user";
 	}
 }
