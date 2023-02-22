@@ -39,6 +39,16 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="/css/bracket.css">
+    
+    <style>
+	
+
+  #calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+	
+	</style>
   </head>
 
   <body>
@@ -641,17 +651,56 @@
           <h4>예약관리</h4>
           <p class="mg-b-0">Introducing Bracket Plus admin template, the most handsome admin template of all time.</p>
         </div>
-      </div><!-- d-flex -->
-
+      </div>
       <div class="br-pagebody">
-
-        <!-- start you own content here -->
-
-      </div><!-- br-pagebody -->
-
-    </div><!-- br-mainpanel -->
+        <div class="br-section-wrapper">
+        	<div class="row mg-t-0">
+            <div class="col-xl-4">
+              <div class="form-layout form-layout-4">
+                <h6 class="br-section-label">스케쥴 등록</h6>
+                <p class="br-section-text">A basic form where labels are aligned in left.</p>
+                <div class="row">
+                  <label class="col-sm-4 form-control-label">회원선택: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" placeholder="Enter firstname">
+                  </div>
+                </div><!-- row -->
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">일정: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" placeholder="Enter lastname">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Email: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" placeholder="Enter email address">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Address: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <textarea rows="2" class="form-control" placeholder="Enter your address"></textarea>
+                  </div>
+                </div>
+                <div class="form-layout-footer mg-t-30">
+                  <button class="btn btn-info btn-block">등록</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 mg-t-20 mg-xl-t-0">
+              <div class="form-layout form-layout-5">
+                <div id='calendar2'></div>
+              </div>
+            </div>
+          </div>	
+        </div>
+      </div>
+    </div>
     <!-- ########## END: MAIN PANEL ########## -->
 	</div>
+	
+	
     <script src="/lib/jquery/jquery.js"></script>
     <script src="/lib/bootstrap/js/bootstrap.js"></script>
     <script src="/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
@@ -659,9 +708,10 @@
     <script src="/lib/jquery-ui/jquery-ui.js"></script>
     <script src="/lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="/lib/peity/jquery.peity.js"></script>
-
-    <script src="/js/bracket.js"></script>
     
+	
+    <script src="/js/bracket.js"></script>
+    <script src="/js/index.global.js"></script>
     <script type="text/javascript">
     	var vueObj = null;
     	function pageLoad(obj) {    		
@@ -670,5 +720,6 @@
     	}
 	</script>
     <script type="text/javascript" src="contents/js/model/vue/schedule-controller.min.js"></script>
+    
   </body>
 </html>

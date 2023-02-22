@@ -28,22 +28,22 @@
         </ul>
       </li>
       <li class="br-menu-item">
-        <a href="#" class="br-menu-link with-sub">
+        <a href="#" class="br-menu-link with-sub" :class="{'active show-sub':selMenu=='PAY'}">
           <span class="fa-fw select-all fas"></span>
           <span class="menu-item-label">매출관리</span>
         </a>
         <ul class="br-menu-sub">
-          <li class="sub-item"><a href="/pay" class="sub-link">매출현황</a></li>
+          <li class="sub-item"><a href="/pay" class="sub-link" :class="{'active':selMenu=='PAY'}">매출현황</a></li>
           <li class="sub-item"><a href="chart-flot.html" class="sub-link">회원권</a></li>
         </ul>
       </li>
       <li class="br-menu-item">
-        <a href="#" class="br-menu-link with-sub">
+        <a href="#" class="br-menu-link with-sub" :class="{'active show-sub':selMenu=='PRODUCT'}">
           <span class="fa-fw select-all fas"></span>
           <span class="menu-item-label">제품관리</span>
         </a>
         <ul class="br-menu-sub">
-          <li class="sub-item"><a href="/product" class="sub-link">제품리스트</a></li>
+          <li class="sub-item"><a href="/product" class="sub-link" :class="{'active':selMenu=='PRODUCT'}">제품리스트</a></li>
         </ul>
       </li>
       <li class="br-menu-item">
