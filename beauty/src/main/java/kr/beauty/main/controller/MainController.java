@@ -53,8 +53,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value={"/user"},method=RequestMethod.GET)
-	public String updateContentBoardView(MainViewModel vm,Model model){
+	public String userView(MainViewModel vm,Model model){
 		model.addAttribute("vm", vm);
 		return "/view/user/user";
+	}
+	
+	@RequestMapping(value={"/sms"},method=RequestMethod.GET)
+	public String smsView(MainViewModel vm,Model model){
+		model.addAttribute("vm", vm);
+		return "/view/sms/sms";
 	}
 }

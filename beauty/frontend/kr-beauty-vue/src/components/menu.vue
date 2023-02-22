@@ -47,12 +47,12 @@
         </ul>
       </li>
       <li class="br-menu-item">
-        <a href="#" class="br-menu-link with-sub">
+        <a href="#" class="br-menu-link with-sub" :class="{'active show-sub':selMenu=='SMS'}">
           <span class="fa-fw select-all fas"></span>
           <span class="menu-item-label">SMS 관리</span>
         </a>
         <ul class="br-menu-sub">
-          <li class="sub-item"><a href="form-elements.html" class="sub-link">제품리스트</a></li>
+          <li class="sub-item"><a href="/sms" class="sub-link" :class="{'active':selMenu=='SMS'}">SMS발신리스트</a></li>
         </ul>
       </li>
     </ul><!-- br-sideleft-menu -->

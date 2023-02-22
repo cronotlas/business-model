@@ -8,6 +8,7 @@ module.exports = {
     ,schedule:'./src/schedule.js'
     ,product:'./src/product.js'
     ,user:'./src/user.js'
+    ,sms:'./src/sms.js'
   },
   output: {
     path: path.resolve(__dirname, './../../src/main/resources/static/contents/js/model/vue'),
