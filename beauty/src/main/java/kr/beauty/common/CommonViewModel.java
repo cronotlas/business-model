@@ -1,8 +1,9 @@
-package kr.beauty.schedule.controller;
+package kr.beauty.common;
 
 import java.util.List;
 
 import kr.beauty.common.dto.UserDTO;
+import kr.beauty.schedule.dto.ScheduleDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,8 +11,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ScheduleViewModel {
+public class CommonViewModel {
 
-	private List<UserDTO> listUser;	
+	private int totalCount;	
+	private int resultCount;
 	
 }

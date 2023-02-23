@@ -13,8 +13,11 @@ new Vue({
 	data: function() {
 		return {
 			calendar:null,
+			isOK:false,
 			viewModel: {
 				listUser:[],
+				detailSchedule:{schedule_comment:'',svc_type_cd:'',user_id:''},
+				listSvcTp:[],
 			}
 		}
 	}
@@ -35,6 +38,7 @@ new Vue({
 				let rs = response.data;
 				console.log(rs.listUser);
 				vm.viewModel.listUser = rs.listUser;
+				vm.viewModel.listSvcTp = rs.listCdDtl;
 			}).catch(function(ex) {
 				console.log(ex);
 			});
@@ -50,7 +54,8 @@ new Vue({
 						center: 'title',
 						right: 'dayGridMonth,timeGridWeek,timeGridDay'
 					},
-					initialDate: '2023-01-12',
+					locale: 'ko',
+					//initialDate: '2023-01-12',
 					navLinks: true, // can click day/week names to navigate views
 					selectable: true,
 					selectMirror: true,
@@ -135,5 +140,39 @@ new Vue({
 			});
 
     }
+		,fnClickCreate:function(){
+			let vm = this;
+			console.log($("#sDate").val());
+			console.log($("#tpBasic").val());
+			console.log($("#userId").val());
+			console.log(vm.viewModel.detailSchedule);
+			vm.viewModel.detailSchedule.user_id = $("#userId").val();
+			vm.viewModel.detailSchedule.svc_type_cd = $("#serviceType").val();
+
+
+
+
+			vm.viewModel.detailSchedule.s_date = '2023-02-23T10:30:00';//$("#sDate").val();
+			vm.viewModel.detailSchedule.e_date = '2023-02-23T14:30:00';//$("#tpBasic").val();
+
+			Axios.post("/schedule/create", {detailSchedule:vm.viewModel.detailSchedule})
+			.then(function(response) {
+				let rs = response.data;
+				if(rs.resultCount>0){
+					vm.isOK = true;
+					setTimeout(function() {
+            vm.isOK=false
+          }, 1000);
+					vm.viewModel.detailSchedule={schedule_comment:'',svc_type_cd:'',user_id:''};
+					$("#sDate").val('');
+					$("#tpBasic").val('');
+					$("#userId").val('').select2();
+					$("#serviceType").val('').select2();
+				}
+			}).catch(function(ex) {
+				console.log(ex);
+			});
+
+		}
   }
 });

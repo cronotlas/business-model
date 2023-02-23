@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.beauty.schedule.dao.IScheduleDAO">
+	
+	<select id="list" parameterType="hashMap" resultType="kr.beauty.schedule.dto.ScheduleDTO">
+		SELECT schedule_seq,
+		       user_id,
+		       s_date,
+		       e_date,
+		       svc_type_cd,
+		       schedule_comment
+		FROM   tb_schedule
+		ORDER  BY s_date 
+	</select>
+	
+	<update id="create" parameterType="kr.beauty.schedule.dto.ScheduleDTO">
+		INSERT INTO PUBLIC.tb_schedule
+		            (user_id,
+		             s_date,
+		             e_date,
+		             svc_type_cd,
+		             schedule_comment)
+		VALUES     (#{user_id},
+		            #{s_date},
+		            #{e_date},
+		            #{svc_type_cd},
+		            #{schedule_comment}); 
+	</update>
+
+</mapper>

@@ -662,45 +662,50 @@
                 <h6 class="br-section-label">스케쥴 등록</h6>
                 <p class="br-section-text">A basic form where labels are aligned in left.</p>
                 <div class="row">
-                  <label class="col-sm-4 form-control-label">회원선택: <span class="tx-danger">*</span></label>
-                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <select class="form-control select2" data-placeholder="Choose one">
-		                <option label="Choose one"></option>
+                  <label class="col-sm-3 form-control-label">회원 선택: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <select class="form-control select2" data-placeholder="회원 선택" id="userId">
+		                <option label="회원 선택"></option>
 		                <option v-for="item in viewModel.listUser" :value="item.user_id">{{item.user_id}}</option>
 		              </select>
                   </div>
                 </div><!-- row -->
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">일정: <span class="tx-danger">*</span></label>
+                  <label class="col-sm-3 form-control-label">일정: <span class="tx-danger">*</span></label>
                   <div class="col-sm-4 mg-t-10 mg-sm-t-0">
-                    <input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD">                    
+                    <input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD" id="sDate" autocomplete="off">                    
                   </div>
-                  <div class="col-sm-4 mg-t-10 mg-sm-t-0">
+                  <div class="col-sm-5 mg-t-10 mg-sm-t-0">
                   	<div class="input-group">
 		              <span class="input-group-addon"><i class="fa fa-clock-o tx-16 lh-0 op-6"></i></span>
-		              <input id="tpBasic" type="text" class="form-control" placeholder="Set time">
+		              <input id="tpBasic" type="text" class="form-control" placeholder="시간선택">
 		            </div>
                   </div>
                 </div>
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">서비스종류: <span class="tx-danger">*</span></label>
-                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <select class="form-control select2" data-placeholder="Choose one">
-		                <option label="Choose one"></option>
-		                <option value="A">네일</option>
-		                <option value="A">세척</option>
+                  <label class="col-sm-3 form-control-label">서비스종류: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <select class="form-control select2" data-placeholder="종류 선택" id="serviceType">
+		                <option label="종류 선택"></option>
+		                <option v-for="item in viewModel.listSvcTp" :value="item.dtl_code">{{item.dtl_title}}</option>
 		              </select>
                   </div>
                 </div>
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">추가사항: <span class="tx-danger">*</span></label>
-                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <textarea rows="6" class="form-control" placeholder="Enter your address"></textarea>
+                  <label class="col-sm-3 form-control-label">추가사항: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <textarea rows="6" class="form-control" placeholder="추가 사항을 적어주세요" v-model="viewModel.detailSchedule.schedule_comment"></textarea>
                   </div>
                 </div>
                 <div class="form-layout-footer mg-t-30">
-                  <button class="btn btn-info btn-block">등록</button>
+                  <button class="btn btn-info btn-block" type="button" v-on:click="fnClickCreate">등록</button>
                 </div>
+                <div class="alert alert-success mg-t-30" role="alert" v-show="isOK">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				  <strong class="d-block d-sm-inline-block-force">등록되었습니다!</strong>
+				</div>
               </div>
             </div>
             <div class="col-xl-8 mg-t-20 mg-xl-t-0">
@@ -729,6 +734,25 @@
 	
     <script src="/js/bracket.js"></script>
     <script src="/js/index.global.js"></script>
+    <script>
+		if(typeof $.datepicker.regional == 'object') {
+			$.datepicker.regional['kr'] = {
+			    closeText: '닫기', // 닫기 버튼 텍스트 변경
+			    currentText: '오늘', // 오늘 텍스트 변경
+			    changeYear: true,
+			    changeMonth: false,
+			    monthNames: ['1 월','2 월','3 월','4 월','5 월','6 월','7 월','8 월','9 월','10 월','11 월','12 월'], // 개월 텍스트 설정
+			    monthNamesShort: ['1 월','2 월','3 월','4 월','5 월','6 월','7 월','8 월','9 월','10 월','11 월','12 월'], // 개월 텍스트 설정
+			    dayNames: ['월요일','화요일','수요일','목요일','금요일','토요일','일요일'], // 요일 텍스트 설정
+			    dayNamesShort: ['월','화','수','목','금','토','일'], // 요일 텍스트 축약 설정   
+			    dayNamesMin: ['월','화','수','목','금','토','일'], // 요일 최소 축약 텍스트 설정
+			    dateFormat: 'dd/mm/yy' // 날짜 포맷 설정
+			};
+		
+			// Seeting up default language, Korean
+			$.datepicker.setDefaults($.datepicker.regional['kr']);
+		}
+	</script>
     <script type="text/javascript">
     	var vueObj = null;
     	function pageLoad(obj) {    		
@@ -740,7 +764,9 @@
             'use strict'
 
             // Datepicker
+            
             $('.fc-datepicker').datepicker({
+            	dateFormat:'yy-mm-dd',
               showOtherMonths: true,
               selectOtherMonths: true
             });
