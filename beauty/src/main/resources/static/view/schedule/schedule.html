@@ -34,6 +34,8 @@
     <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" rel="stylesheet">
     <link href="/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="/lib/jt.timepicker/jquery.timepicker.css" rel="stylesheet">
     <link href="/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="/lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
 
@@ -662,25 +664,38 @@
                 <div class="row">
                   <label class="col-sm-4 form-control-label">회원선택: <span class="tx-danger">*</span></label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" class="form-control" placeholder="Enter firstname">
+                    <select class="form-control select2" data-placeholder="Choose one">
+		                <option label="Choose one"></option>
+		                <option v-for="item in viewModel.listUser" :value="item.user_id">{{item.user_id}}</option>
+		              </select>
                   </div>
                 </div><!-- row -->
                 <div class="row mg-t-20">
                   <label class="col-sm-4 form-control-label">일정: <span class="tx-danger">*</span></label>
-                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" class="form-control" placeholder="Enter lastname">
+                  <div class="col-sm-4 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control fc-datepicker" placeholder="YYYY-MM-DD">                    
+                  </div>
+                  <div class="col-sm-4 mg-t-10 mg-sm-t-0">
+                  	<div class="input-group">
+		              <span class="input-group-addon"><i class="fa fa-clock-o tx-16 lh-0 op-6"></i></span>
+		              <input id="tpBasic" type="text" class="form-control" placeholder="Set time">
+		            </div>
                   </div>
                 </div>
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">Email: <span class="tx-danger">*</span></label>
+                  <label class="col-sm-4 form-control-label">서비스종류: <span class="tx-danger">*</span></label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" class="form-control" placeholder="Enter email address">
+                    <select class="form-control select2" data-placeholder="Choose one">
+		                <option label="Choose one"></option>
+		                <option value="A">네일</option>
+		                <option value="A">세척</option>
+		              </select>
                   </div>
                 </div>
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">Address: <span class="tx-danger">*</span></label>
+                  <label class="col-sm-4 form-control-label">추가사항: <span class="tx-danger">*</span></label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <textarea rows="2" class="form-control" placeholder="Enter your address"></textarea>
+                    <textarea rows="6" class="form-control" placeholder="Enter your address"></textarea>
                   </div>
                 </div>
                 <div class="form-layout-footer mg-t-30">
@@ -708,6 +723,8 @@
     <script src="/lib/jquery-ui/jquery-ui.js"></script>
     <script src="/lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="/lib/peity/jquery.peity.js"></script>
+    <script src="/lib/jt.timepicker/jquery.timepicker.js"></script>
+    <script src="/lib/select2/js/select2.min.js"></script>
     
 	
     <script src="/js/bracket.js"></script>
@@ -718,6 +735,20 @@
     		vueObj = obj;
     		obj.fnGetInit('SCHEDULE');   
     	}
+    	
+    	$(function(){
+            'use strict'
+
+            // Datepicker
+            $('.fc-datepicker').datepicker({
+              showOtherMonths: true,
+              selectOtherMonths: true
+            });
+            
+            $('#tpBasic').timepicker();
+
+
+          });
 	</script>
     <script type="text/javascript" src="contents/js/model/vue/schedule-controller.min.js"></script>
     

@@ -22,13 +22,24 @@ new Vue({
 		console.log("mounted [schedule]");
 		try {
 			this.fnInit();
-      
+      this.fnInitCalendat();
 		} catch (e) {
 			console.log(e);
 		}
 	}
 	,methods: {
-    fnInit: function() {
+		fnInit: function(){
+			let vm = this;
+			Axios.post("/schedule/init", {})
+			.then(function(response) {
+				let rs = response.data;
+				console.log(rs.listUser);
+				vm.viewModel.listUser = rs.listUser;
+			}).catch(function(ex) {
+				console.log(ex);
+			});
+		}
+    ,fnInitCalendat: function() {
       let vm = this;
 			document.addEventListener('DOMContentLoaded', function() {
 				var calendarEl = document.getElementById('calendar2');

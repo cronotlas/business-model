@@ -18,15 +18,13 @@ import kr.beauty.main.service.IMainService;
 @Controller
 public class ScheduleController {
 	
-	/*
-	 * @Autowired private IMainService mainService;
-	 */
+	@Autowired
+	private IMainService mainService;
 
-	/*
-	 * @RequestMapping(value="/main",method=RequestMethod.POST) public @ResponseBody
-	 * MainViewModel listInfoActive(@RequestBody MainViewModel vm,Model model)throws
-	 * Exception{
-	 * 
-	 * vm.setListInfo(mainService.listUser()); return vm; }
-	 */
+	@RequestMapping(value="/schedule/init",method=RequestMethod.POST)
+	public @ResponseBody ScheduleViewModel listInfoActive(@RequestBody ScheduleViewModel vm,Model model)throws Exception{
+		
+		vm.setListUser(mainService.listUser());
+		return vm;
+	}
 }
