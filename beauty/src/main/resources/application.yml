@@ -18,5 +18,5 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/**/**.xml
   
 server:
-  port: 55555
+  port: 55556
   

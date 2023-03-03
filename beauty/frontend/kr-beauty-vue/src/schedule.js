@@ -18,13 +18,14 @@ new Vue({
 				listUser:[],
 				detailSchedule:{schedule_comment:'',svc_type_cd:'',user_id:''},
 				listSvcTp:[],
+				listSchedule:[],
 			}
 		}
 	}
 	,mounted: function() {
 		console.log("mounted [schedule]");
 		try {
-			this.fnInit();
+			
       this.fnInitCalendat();
 		} catch (e) {
 			console.log(e);
@@ -36,9 +37,10 @@ new Vue({
 			Axios.post("/schedule/init", {})
 			.then(function(response) {
 				let rs = response.data;
-				console.log(rs.listUser);
+				console.log(rs.listSchedule);
 				vm.viewModel.listUser = rs.listUser;
 				vm.viewModel.listSvcTp = rs.listCdDtl;
+				vm.fnSetCal(rs.listSchedule);
 			}).catch(function(ex) {
 				console.log(ex);
 			});
@@ -137,6 +139,9 @@ new Vue({
 				});
 		
 				vm.calendar.render();
+				console.log("asdfads");
+				vm.fnInit();
+				
 			});
 
     }
@@ -150,10 +155,38 @@ new Vue({
 			vm.viewModel.detailSchedule.svc_type_cd = $("#serviceType").val();
 
 
+			var imsi =  $("#tpBasic").val().substring($("#tpBasic").val().length-2,$("#tpBasic").val().length);
+console.log(imsi);
+var imsi2 =  $("#tpBasic").val().substring(0,$("#tpBasic").val().length-2);
+
+console.log(imsi2.split(':')[0]);
+console.log(imsi2.split(':')[1]);
 
 
-			vm.viewModel.detailSchedule.s_date = '2023-02-23T10:30:00';//$("#sDate").val();
-			vm.viewModel.detailSchedule.e_date = '2023-02-23T14:30:00';//$("#tpBasic").val();
+let hh=parseInt(imsi2.split(':')[0]);
+if(imsi=='오후'){
+	hh=hh+12;
+}
+let addhh=0;
+if(vm.viewModel.detailSchedule.svc_type_cd=='SVC_01'){
+	addhh=hh+1;
+}else if(vm.viewModel.detailSchedule.svc_type_cd=='SVC_01'){
+	addhh=hh+12;
+}else if(vm.viewModel.detailSchedule.svc_type_cd=='SVC_01'){
+	addhh=hh+12;
+}
+hh =hh<10?"0"+hh:hh;
+addhh =addhh<10?"0"+addhh:addhh;
+let mi=parseInt(imsi2.split(':')[1]);
+
+mi= mi<10?"0"+mi:mi;
+console.log(hh+':'+mi);
+
+
+
+
+			vm.viewModel.detailSchedule.s_date = $("#sDate").val()+'T'+hh+':'+mi+':00';//$("#sDate").val();
+			vm.viewModel.detailSchedule.e_date = $("#sDate").val()+'T'+addhh+':'+mi+':00';//$("#tpBasic").val();
 
 			Axios.post("/schedule/create", {detailSchedule:vm.viewModel.detailSchedule})
 			.then(function(response) {
@@ -173,6 +206,26 @@ new Vue({
 				console.log(ex);
 			});
 
+		}
+		,fnSetCal:function(paramList){
+			let vm = this;
+			/* Axios.post()
+			,then(function(response){
+				let rs = response.data;
+				console.log(rs.scheduleß);
+			}); */
+			console.log('asdfasdfsadfads');
+			for(let i=0;i<paramList.length;i++){
+				console.log(paramList[i].s_date);
+				console.log(paramList[i].user_id);
+				var item = {
+					title:paramList[i].user_id
+					,start:paramList[i].s_date
+					,end:paramList[i].e_date
+				}
+				vm.calendar.addEvent(item);
+			}
+			vm.calendar.render();
 		}
   }
 });
