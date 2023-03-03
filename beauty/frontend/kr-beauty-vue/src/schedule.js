@@ -37,7 +37,6 @@ new Vue({
 			Axios.post("/schedule/init", {})
 			.then(function(response) {
 				let rs = response.data;
-				console.log(rs.listSchedule);
 				vm.viewModel.listUser = rs.listUser;
 				vm.viewModel.listSvcTp = rs.listCdDtl;
 				vm.fnSetCal(rs.listSchedule);
@@ -80,66 +79,10 @@ new Vue({
 					},
 					editable: true,
 					dayMaxEvents: true, // allow "more" link when too many events
-					events: [
-						{
-							title: 'All Day Event',
-							start: '2023-01-01'
-						},
-						{
-							title: 'Long Event',
-							start: '2023-01-07',
-							end: '2023-01-10'
-						},
-						{
-							groupId: 999,
-							title: 'Repeating Event',
-							start: '2023-01-09T16:00:00'
-						},
-						{
-							groupId: 999,
-							title: 'Repeating Event',
-							start: '2023-01-16T16:00:00'
-						},
-						{
-							title: 'Conference',
-							start: '2023-01-11',
-							end: '2023-01-13'
-						},
-						{
-							title: 'Meeting',
-							start: '2023-01-12T10:30:00',
-							end: '2023-01-12T12:30:00'
-						},
-						{
-							title: 'Lunch',
-							start: '2023-01-12T12:00:00'
-						},
-						{
-							title: 'Meeting',
-							start: '2023-01-12T14:30:00'
-						},
-						{
-							title: 'Happy Hour',
-							start: '2023-01-12T17:30:00'
-						},
-						{
-							title: 'Dinner',
-							start: '2023-01-12T20:00:00'
-						},
-						{
-							title: 'Birthday Party',
-							start: '2023-01-13T07:00:00'
-						},
-						{
-							title: 'Click for Google',
-							url: 'http://google.com/',
-							start: '2023-01-28'
-						}
-					]
+					events: []
 				});
 		
 				vm.calendar.render();
-				console.log("asdfads");
 				vm.fnInit();
 				
 			});
@@ -147,20 +90,12 @@ new Vue({
     }
 		,fnClickCreate:function(){
 			let vm = this;
-			console.log($("#sDate").val());
-			console.log($("#tpBasic").val());
-			console.log($("#userId").val());
-			console.log(vm.viewModel.detailSchedule);
 			vm.viewModel.detailSchedule.user_id = $("#userId").val();
 			vm.viewModel.detailSchedule.svc_type_cd = $("#serviceType").val();
 
 
 			var imsi =  $("#tpBasic").val().substring($("#tpBasic").val().length-2,$("#tpBasic").val().length);
-console.log(imsi);
 var imsi2 =  $("#tpBasic").val().substring(0,$("#tpBasic").val().length-2);
-
-console.log(imsi2.split(':')[0]);
-console.log(imsi2.split(':')[1]);
 
 
 let hh=parseInt(imsi2.split(':')[0]);
@@ -180,7 +115,6 @@ addhh =addhh<10?"0"+addhh:addhh;
 let mi=parseInt(imsi2.split(':')[1]);
 
 mi= mi<10?"0"+mi:mi;
-console.log(hh+':'+mi);
 
 
 
@@ -214,10 +148,7 @@ console.log(hh+':'+mi);
 				let rs = response.data;
 				console.log(rs.scheduleß);
 			}); */
-			console.log('asdfasdfsadfads');
 			for(let i=0;i<paramList.length;i++){
-				console.log(paramList[i].s_date);
-				console.log(paramList[i].user_id);
 				var item = {
 					title:paramList[i].user_id
 					,start:paramList[i].s_date
